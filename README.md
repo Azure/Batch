@@ -1,31 +1,64 @@
+# Microsoft Azure Batch
+This repository provides a communication channel for customers using
+the [Microsoft Azure Batch](https://aka.ms/batch) service.
 
-# Contributing
+* [Announcements](https://github.com/Azure/Batch/tree/master/announcements)
+* [Issue Tracking](https://github.com/Azure/Batch/issues)
+    * [Notices](https://github.com/Azure/Batch/labels/notice)
+    * [Known issues](https://github.com/Azure/Batch/labels/known%20issue)
+    * [Questions](https://github.com/Azure/Batch/labels/question)
+* [Status](https://azure.microsoft.com/status/)
+* Batch Node Agent Change Log - coming soon
 
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
-the rights to use your contribution. For details, visit https://cla.microsoft.com.
+## Resources
 
-When you submit a pull request, a CLA-bot will automatically determine whether you need to provide
-a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the instructions
-provided by the bot. You will only need to do this once across all repos using our CLA.
+### About
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+* [Technical overview](https://docs.microsoft.com/azure/batch/batch-technical-overview)
+* [Documentation](https://docs.microsoft.com/azure/batch/)
+* [Region availability](https://azure.microsoft.com/global-infrastructure/services/)
 
-# Legal Notices
+### Community
 
-Microsoft and any contributors grant you a license to the Microsoft documentation and other content
-in this repository under the [Creative Commons Attribution 4.0 International Public License](https://creativecommons.org/licenses/by/4.0/legalcode),
-see the [LICENSE](LICENSE) file, and grant you a license to any code in the repository under the [MIT License](https://opensource.org/licenses/MIT), see the
-[LICENSE-CODE](LICENSE-CODE) file.
+* [Stack Overflow azure-batch tagged questions](https://stackoverflow.com/questions/tagged/azure-batch)
+* [MSDN Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch) -
+please post new questions under [GitHub issues](https://github.com/Azure/Batch/issues)
+or Stack Overflow
+* [User Voice](https://feedback.azure.com/forums/269742-batch) - please use
+[GitHub issues](https://github.com/Azure/Batch/issues) instead
 
-Microsoft, Windows, Microsoft Azure and/or other Microsoft products and services referenced in the documentation
-may be either trademarks or registered trademarks of Microsoft in the United States and/or other countries.
-The licenses for this project do not grant you rights to use any Microsoft names, logos, or trademarks.
-Microsoft's general trademark guidelines can be found at http://go.microsoft.com/fwlink/?LinkID=254653.
+### Batch Tooling and Samples
 
-Privacy information can be found at https://privacy.microsoft.com/en-us/
+* [Batch Labs](https://azure.github.io/BatchLabs/): monitor, manage and debug
+your Batch resources with a cross-platform UI
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli):
+command-line interface for managing Azure resources with support for
+[Batch](https://docs.microsoft.com/cli/azure/batch)
+* [Azure Batch SDK Samples](https://github.com/Azure/azure-batch-samples):
+code samples using the Azure Batch SDK in various languages
 
-Microsoft and any contributors reserve all others rights, whether under their respective copyrights, patents,
-or trademarks, whether by implication, estoppel or otherwise.
+### Accelerators
+
+* [aztk](https://github.com/Azure/aztk): on-demand Spark clusters on Azure
+Batch
+* [Batch Shipyard](https://github.com/Azure/batch-shipyard): provision,
+execute and monitor container-based batch processing and HPC workloads on
+Azure Batch
+* [doAzureParallel](https://github.com/Azure/doAzureParallel): parallel
+backend on Azure Batch for the foreach package in R
+
+### Other Tooling
+* [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/):
+manage contents of your Azure Storage accounts with a cross-platform UI
+* [Fast Data Transfer](https://www.microsoft.com/en-us/garage/profiles/fast-data-transfer/):
+high-speed data loader for Azure
+
+## Related Services
+
+* [Azure Batch AI](https://azure.microsoft.com/services/batch-ai/)
+* [Azure Batch Rendering](https://azure.microsoft.com/services/batch/rendering/)
+
+* * *
+
+**Repository Notices:** [Contributing](CONTRIBUTING.md),
+[Code of Conduct](CODE_OF_CONDUCT.md), [Legal Notices](LEGAL_NOTICES.md)
