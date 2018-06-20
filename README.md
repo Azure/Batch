@@ -8,7 +8,7 @@ the [Microsoft Azure Batch](https://aka.ms/batch) service.
     * [Known issues](https://github.com/Azure/Batch/labels/known%20issue)
     * [Questions](https://github.com/Azure/Batch/labels/question)
 * [Status](https://azure.microsoft.com/status/)
-* Batch Node Agent Change Log - coming soon
+* [Batch Node Agent Change Log](changelogs/nodeagent/CHANGELOG.md)
 
 ## Resources
 
@@ -50,6 +50,8 @@ backend on Azure Batch for the foreach package in R
 ### Other Tooling
 * [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/):
 manage contents of your Azure Storage accounts with a cross-platform UI
+* [blobxfer](https://github.com/Azure/blobxfer): cross-platform Azure storage
+data movement tool
 * [Fast Data Transfer](https://www.microsoft.com/en-us/garage/profiles/fast-data-transfer/):
 high-speed data loader for Azure
 
