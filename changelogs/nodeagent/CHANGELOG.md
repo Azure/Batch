@@ -23,6 +23,21 @@ be created.
 
 ## Change Log
 
+### 1.3.0.8 - 2018-08-13
+- Add support required for task `result` OData filter for all task types.
+- Improve detection of Blob Not Found errors when downloading 
+  resource files or application packages.
+- Improve directory deletion logic:
+  - Files or directories locked by running processes.
+  - Files or directories have unexpected ownership/permissions.
+- Added support for the following new images:
+  - `Canonical:UbuntuServer:18.04-LTS`
+  - `microsoft-azure-batch:centos-container:7-5`
+- Fix bug and added retries where where docker login could fail due to 
+  a timeout error.
+- Fix bug where node couldn't run any tasks after a reboot, due to getting
+  stuck trying to garbage collect task files.
+
 ### 1.3.0.6 - 2018-07-10
 - Add support for software entitlements given to the Node Agent when it joins
   the pool (for use in the StartTask).
@@ -32,8 +47,8 @@ be created.
 - Improve telemetry emitted by the Node Agent if it fails to properly
   bootstrap.
 - Fix bug where using 
-  microsoft-azure-batch:ubuntu-server-container:16-04-lts or
-  microsoft-azure-batch:ubuntu-server-container-rdma:16-04-lts marketplace
+  `microsoft-azure-batch:ubuntu-server-container:16-04-lts` or
+  `microsoft-azure-batch:ubuntu-server-container-rdma:16-04-lts` marketplace
   images on a GPU SKU would cause kernel updates to be perpetually held.
 - Fix bug where in rare cases tasks could get stuck in `running` state if
   the Node Agent process was terminated at a certain point.
