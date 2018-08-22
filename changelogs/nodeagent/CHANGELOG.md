@@ -23,6 +23,14 @@ be created.
 
 ## Change Log
 
+### 1.3.0.9 - 2018-08-21
+- Reduce agent disk usage by removing extraneous logging and reducing
+  footprint of stored certificate data.
+- Fix bug where the agent could get stuck attempting to perform environment
+  variable expansion on an infinite loop of environment variables.
+- Improve error returned to user if an environment block has a loop in it.
+- Fix bug when using `ContainerSettings` with `--hostname`.
+
 ### 1.3.0.8 - 2018-08-13
 - Add support required for task `result` OData filter for all task types.
 - Improve detection of Blob Not Found errors when downloading 
