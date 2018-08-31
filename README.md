@@ -29,7 +29,7 @@ or Stack Overflow
 
 ### Batch Tooling and Samples
 
-* [Batch Labs](https://azure.github.io/BatchLabs/): monitor, manage and debug
+* [Batch Explorer](https://azure.github.io/BatchExplorer/): monitor, manage and debug
 your Batch resources with a cross-platform UI
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli):
 command-line interface for managing Azure resources with support for
