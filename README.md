@@ -34,7 +34,7 @@ your Batch resources with a cross-platform UI
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli):
 command-line interface for managing Azure resources with support for
 [Batch](https://docs.microsoft.com/cli/azure/batch)
-* [Azure Batch SDK Samples](https://github.com/Azure/azure-batch-samples):
+* [Azure Batch SDK Samples](https://github.com/Azure-Samples/azure-batch-samples):
 code samples using the Azure Batch SDK in various languages
 
 ### Accelerators
