@@ -23,6 +23,10 @@ be created.
 
 ## Change Log
 
+### 1.3.0.10 - 2018-08-31
+- Fix regression where rebooting a node with certificates could cause it to 
+  become unresponsive.
+
 ### 1.3.0.9 - 2018-08-21
 - Reduce agent disk usage by removing extraneous logging and reducing
   footprint of stored certificate data.
