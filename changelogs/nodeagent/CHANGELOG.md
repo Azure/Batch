@@ -23,6 +23,17 @@ be created.
 
 ## Change Log
 
+### 1.3.0.11 - 2018-09-13
+- Signed binaries are now provided for Windows builds of the Node Agent.
+- Fix bug where some Node Agent files had a corrupt digital signature.
+- Reduce how aggressively the Node Agent retries on directory delete failures.
+- Fix bug where sometimes autoscale metrics could be invalid.
+- Fix bug where Windows tasks running in parallel (on pools with 
+  `MaxTasksPerNode` > 1) could inherit each others stdout/stderr handles.
+  This could cause failures when trying to delete the task's files because
+  running processes would still have locks on stdout/stderr or lead 
+  to restarts.
+
 ### 1.3.0.10 - 2018-08-31
 - Fix regression where rebooting a node with certificates could cause it to 
   become unresponsive.
