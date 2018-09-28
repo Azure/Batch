@@ -21,7 +21,27 @@ rollback a certain version due to possible customer impacting concerns.
 In order to get the latest version of the Batch Node Agent, a new pool should
 be created.
 
+### Determining what version of the Batch Node Agent is on a Node
+Using a client targeting REST API version `2018-08-01.7.0` or
+newer call the [get compute node](
+https://docs.microsoft.com/en-us/rest/api/batchservice/computenode/get)
+or [list compute nodes](
+https://docs.microsoft.com/en-us/rest/api/batchservice/computenode/list)
+APIs and examine the `version` property of [nodeAgentInfo](
+https://docs.microsoft.com/en-us/rest/api/batchservice/computenode/list#nodeagentinformation).
+
 ## Change Log
+
+### 1.3.0.12 - 2018-09-28
+- Fix bug where once a node had installed a task level application package
+  it would include that application package environment variable on other 
+  tasks even if they didn't specify a dependency on that application package.
+- Fix bug where job preparation tasks which failed due to a certificate 
+  installation error could never be re-run, which blocked the job on that node
+  forever.
+- Reduce the time to install and prepare the Batch components on Windows 
+  compute nodes. In ideal cases this reduces the time taken for a node to
+  reach `idle` state when initially joining a pool.
 
 ### 1.3.0.11 - 2018-09-13
 - Signed binaries are now provided for Windows builds of the Node Agent.
