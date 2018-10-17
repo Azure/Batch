@@ -32,6 +32,11 @@ https://docs.microsoft.com/en-us/rest/api/batchservice/computenode/list#nodeagen
 
 ## Change Log
 
+### 1.4.2 - 2018-10-16
+- Fix bug introduced in `1.3.0.12` where nodes with application packages
+  could go to `Unusable` after being rebooted.
+- Improve the logs generated when uploading `OutputFiles` in `fileuploadout.txt`.
+
 ### 1.3.0.12 - 2018-09-28
 - Fix bug where once a node had installed a task level application package
   it would include that application package environment variable on other 
