@@ -32,6 +32,22 @@ https://docs.microsoft.com/en-us/rest/api/batchservice/computenode/list#nodeagen
 
 ## Change Log
 
+### 1.4.3 - 2018-10-29
+- Fix bug where files which were marked read-only on Windows could not
+  be deleted in some cases.
+- Fix bug where file deletion failures during node boot could delay
+  initialization for a long time, causing the node get marked `Unusable`.
+- Fix bug where the tasks spawned by the NodeAgent on Windows would have 
+  the win32 `DllDirectory` path set. This cased native application 
+  which also used the `DllDirectory` issues in some cases.
+- Use a more generous connection/transmission timeout when uploading files via
+  `OutputFiles`.
+- Fix bug where unversioned environment variables for applications 
+  (e.g. `AZ_BATCH_APP_PACKAGE_AppName`) could incorrectly point at older 
+  package versions in some cases if both old and new packages were
+  installed onto the same node.
+- Reduce log file disk usage for VMs with limited ephemeral disk space.
+
 ### 1.4.2 - 2018-10-16
 - Fix bug introduced in `1.3.0.12` where nodes with application packages
   could go to `Unusable` after being rebooted.
