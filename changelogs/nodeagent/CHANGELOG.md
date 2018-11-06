@@ -32,14 +32,24 @@ https://docs.microsoft.com/en-us/rest/api/batchservice/computenode/list#nodeagen
 
 ## Change Log
 
+### 1.4.4 - 2018-11-06
+- Fix bug where multi-instance tasks with common resource files and normal 
+  resource files would fail to download the common resource files in 
+  some cases.
+- Fix bug where the agent could leak memory when preparing the task
+  command line for execution in Windows.
+- Fix bug which prevented Batch service logs from being written to
+  disk on Windows.
+- Improve error handling for all resource file downloads.
+
 ### 1.4.3 - 2018-10-29
 - Fix bug where files which were marked read-only on Windows could not
   be deleted in some cases.
 - Fix bug where file deletion failures during node boot could delay
   initialization for a long time, causing the node get marked `Unusable`.
-- Fix bug where the tasks spawned by the NodeAgent on Windows would have 
-  the win32 `DllDirectory` path set. This cased native application 
-  which also used the `DllDirectory` issues in some cases.
+- Fix bug where the tasks spawned by the NodeAgent on Windows would incorrectly 
+  have the win32 `DllDirectory` path set. This allows native applications 
+  using the `SetDllDirectory` API to behave as intended.
 - Use a more generous connection/transmission timeout when uploading files via
   `OutputFiles`.
 - Fix bug where unversioned environment variables for applications 
@@ -51,7 +61,8 @@ https://docs.microsoft.com/en-us/rest/api/batchservice/computenode/list#nodeagen
 ### 1.4.2 - 2018-10-16
 - Fix bug introduced in `1.3.0.12` where nodes with application packages
   could go to `Unusable` after being rebooted.
-- Improve the logs generated when uploading `OutputFiles` in `fileuploadout.txt`.
+- Improve the logs generated when uploading `OutputFiles` in 
+  `fileuploadout.txt`.
 
 ### 1.3.0.12 - 2018-09-28
 - Fix bug where once a node had installed a task level application package
