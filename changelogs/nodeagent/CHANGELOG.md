@@ -32,6 +32,10 @@ https://docs.microsoft.com/en-us/rest/api/batchservice/computenode/list#nodeagen
 
 ## Change Log
 
+### 1.4.5 - 2018-11-13
+- Fix bug where certain connection errors were not properly 
+  retried when performing resource file downloads on Windows.
+
 ### 1.4.4 - 2018-11-06
 - Fix bug where multi-instance tasks with common resource files and normal 
   resource files would fail to download the common resource files in 
