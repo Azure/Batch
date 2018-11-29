@@ -32,6 +32,20 @@ https://docs.microsoft.com/en-us/rest/api/batchservice/computenode/list#nodeagen
 
 ## Change Log
 
+### 1.4.7 - 2018-11-29
+- Implement a timeout on Windows user profile creation. If the user profile
+  creation takes too long, the task is retried (possibly on another 
+  compute node).
+- Fix bug on Windows where some tasks which create child processes could 
+  prevent task termination even if the parent process exited, causing 
+  the task to get stuck.
+- Fix application package root directory to be `applications`
+  and not `apppackages`.
+- Fix bug where tasks which were retried on the node did 
+  not properly clean up their working directory prior to retry.
+- Add support for specifying Windows user login mode (`batch` or `interactive`).
+- Add support for Windows Server 2019 in `VirtualMachineConfiguration` pools.
+
 ### 1.4.5 - 2018-11-13
 - Fix bug where certain connection errors were not properly 
   retried when performing resource file downloads on Windows.
