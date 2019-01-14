@@ -32,6 +32,14 @@ https://docs.microsoft.com/en-us/rest/api/batchservice/computenode/list#nodeagen
 
 ## Change Log
 
+### 1.4.9 - 2019-01-14
+- Fix bug where connection/HTTP failures happening persistently for a long 
+  period of time could cause the agent to enter an unrecoverable state.
+- Retry longer on connection errors.
+- Retry on intermittent DNS failures.
+- Move Windows user profiles to the ephemeral drive for 
+  `CloudServiceConfiguration` based pools.
+
 ### 1.4.7 - 2018-11-29
 - Implement a timeout on Windows user profile creation. If the user profile
   creation takes too long, the task is retried (possibly on another 
