@@ -32,6 +32,20 @@ https://docs.microsoft.com/en-us/rest/api/batchservice/computenode/list#nodeagen
 
 ## Change Log
 
+### 1.4.10 - 2019-02-03
+- Fix bug that caused the node to get stuck in `Unusable` 
+  due to rare cases of unavailable networking at the time of agent boot.
+- Fix bug where frequent reboots could cause the agent to be unable
+  to join a pool, even if the reboots stopped happening.
+- Fix bug where job preparation tasks could get stuck on VMs with 
+  `MaxTaskPerVMs` greater than 1 if multiple tasks were scheduled to
+  the node at the same time.
+- Fix bug where files downloaded by the node could get corrupted.
+- Fix bug where the agent could not download `ResourceFile`s which specified
+  `AutoStorageContainerName`.
+- Fix bug where node preparation tasks, job preparation tasks, and job release
+  tasks were put into an incorrect state if the agent had an internal error.
+
 ### 1.4.9 - 2019-01-14
 - Fix bug where connection/HTTP failures happening persistently for a long 
   period of time could cause the agent to enter an unrecoverable state.
