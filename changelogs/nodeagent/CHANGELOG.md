@@ -32,6 +32,14 @@ https://docs.microsoft.com/en-us/rest/api/batchservice/computenode/list#nodeagen
 
 ## Change Log
 
+### 1.4.12 - 2019-02-15
+- Fix bug which could corrupt the download of the final portion of a 
+  `ResourceFile` in rare cases.
+
+### 1.4.11 - 2019-02-05
+- Fix bug where the OS drive is replaced (but the ephemeral drive is retained)
+  which caused nodes to get stuck in `Unusable`.
+
 ### 1.4.10 - 2019-02-03
 - Fix bug that caused the node to get stuck in `Unusable` 
   due to rare cases of unavailable networking at the time of agent boot.
