@@ -32,6 +32,21 @@ https://docs.microsoft.com/en-us/rest/api/batchservice/computenode/list#nodeagen
 
 ## Change Log
 
+### 1.5.3 - 2019-03-12
+- Add support for `--mount` option on container tasks.
+- Add support for an upcoming Batch Service feature allowing container
+  tasks to use the working directory of the container rather than 
+  the default Batch working directory for the task.
+  - This feature will be enabled in a future Batch REST API version.
+- Fix bug which could cause a task to get stuck if deleted immediately
+  after it started running.
+- Fix bug where the multi-instance master subtask could 
+  mistakenly overwrite details about the execution of the other subtasks. This 
+  caused the subtasks to not show up in the API until they reached 
+  `completed` state.
+- Fix bug where `docker login` was not retried when throttled.
+- Improve handling of Windows user profile creation getting stuck.
+
 ### 1.4.12 - 2019-02-15
 - Fix bug which could corrupt the download of the final portion of a 
   `ResourceFile` in rare cases.
