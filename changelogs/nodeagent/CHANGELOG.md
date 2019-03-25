@@ -32,6 +32,13 @@ https://docs.microsoft.com/en-us/rest/api/batchservice/computenode/list#nodeagen
 
 ## Change Log
 
+### 1.5.4 - 2019-03-25
+- Internal telemetry improvements to help the product team better diagnose 
+  issues after VMs have been removed from a pool.
+- Fix issue where a concurrent termination or deletion operation in 
+  conjunction with command process exit would prevent new tasks from 
+  being run.
+
 ### 1.5.3 - 2019-03-12
 - Add support for `--mount` option on container tasks.
 - Add support for an upcoming Batch Service feature allowing container
