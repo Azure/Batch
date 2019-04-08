@@ -32,6 +32,14 @@ https://docs.microsoft.com/en-us/rest/api/batchservice/computenode/list#nodeagen
 
 ## Change Log
 
+### 1.5.5 - 2019-04-03
+- Fix bug where application package environment variables were sometimes
+  not correctly updated when the default version of the application was 
+  changed and the node was rebooted.
+- Fix bug where after a node reboot in Linux, sometimes the `List Task Files`
+  or `Get Task File` APIs would fail to find a file that was actually on disk.
+- Fix bug where `ExitConditions` were ignored and overwritten to be empty.
+
 ### 1.5.4 - 2019-03-25
 - Internal telemetry improvements to help the product team better diagnose 
   issues after VMs have been removed from a pool.
