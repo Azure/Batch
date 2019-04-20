@@ -32,6 +32,20 @@ https://docs.microsoft.com/en-us/rest/api/batchservice/computenode/list#nodeagen
 
 ## Change Log
 
+### 1.5.6 - 2019-04-19
+- Add preliminary support for per-job VNET injection.
+- Fix bug where a task unable to complete on the compute node was 
+  incorrectly reported as completed.
+- Fix bug where a task encountering a bad image format exception was 
+  treated as an internal error and retried forever.
+- Pool scope users are no longer deleted and recreated on node boot.
+  This attempts to reduce a number of internal errors encountered either 
+  because the Windows user profile service has an issue, or the customer has 
+  done something to lock the user profile directory. Pool scope users and 
+  their associated data now persist for the lifetime of the node,
+  including through reboots.
+- Improve error handling for Docker login and pull actions.
+
 ### 1.5.5 - 2019-04-03
 - Fix bug where application package environment variables were sometimes
   not correctly updated when the default version of the application was 
