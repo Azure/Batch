@@ -32,6 +32,13 @@ https://docs.microsoft.com/en-us/rest/api/batchservice/computenode/list#nodeagen
 
 ## Change Log
 
+### 1.5.7 - 2019-04-26
+- Improve retries on DNS resolution failures.
+- Retry up to a maximum of 3 times for a retryable task which fails in 
+  succession on a compute node before attempting to reschedule on another node
+  if possible.
+- Fix bug which could cause statistics collection to be delayed.
+
 ### 1.5.6 - 2019-04-19
 - Add preliminary support for per-job VNET injection.
 - Fix bug where a task unable to complete on the compute node was 
