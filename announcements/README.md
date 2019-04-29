@@ -5,6 +5,7 @@ The following links are official service update communications in reverse
 chronological order. You can find the complete list
 [here](https://azure.microsoft.com/updates/?product=batch).
 
+* [2019-04-22](https://azure.microsoft.com/updates/azure-batch-updates-april-2019/)
 * [2018-06-12](https://azure.microsoft.com/updates/azure-batch-updates-may-2018/)
 * [2017-11-16](https://azure.microsoft.com/updates/batch-rendering-v-ray-name-changes/)
 * [2017-10-13](https://azure.microsoft.com/updates/azure-batch-updates-october2017/)
