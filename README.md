@@ -57,8 +57,8 @@ high-speed data loader for Azure
 
 ## Related Services
 
-* [Azure Batch AI](https://azure.microsoft.com/services/batch-ai/)
 * [Azure Batch Rendering](https://azure.microsoft.com/services/batch/rendering/)
+* [Azure Machine Learning Compute](https://azure.microsoft.com/services/machine-learning-service/)
 
 * * *
 
