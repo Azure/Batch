@@ -264,8 +264,6 @@ https://docs.microsoft.com/en-us/rest/api/batchservice/computenode/list#nodeagen
 ### 1.2.0.12 - 2018-04-04
 - Reduce Node Agent disk/CPU usage while the agent is idle or running a task
   and waiting for that task to exit.
-
-### 1.2.0.11 - 2018-03-18
 - Improve 'docker pull' error handling and add retries for Node Agents running
   in container pools.
 - Fix bug where container pools didn't do 'image get' before 'docker pull'
@@ -278,7 +276,7 @@ https://docs.microsoft.com/en-us/rest/api/batchservice/computenode/list#nodeagen
 - Fix bug which caused tasks to get stuck in "running" forever caused by
   incorrect read logic.
 
-### 1.2.0.6 - 2018-02-15
+### 1.2.0.7 - 2018-02-15
 - For container pools, attempt Docker service start if the Docker service is
   not already started on Windows.
 - Improve error handling/logging for CreateProfile during task process
