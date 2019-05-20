@@ -32,6 +32,18 @@ https://docs.microsoft.com/en-us/rest/api/batchservice/computenode/list#nodeagen
 
 ## Change Log
 
+### 1.5.9 - 2019-05-16
+- Fix bug where task metrics could be dropped due to integer overflow.
+- Fix extremely rare bug causing tasks to be stuck in `running` state even 
+  when the associated processes had exited on Windows.
+- Improve error handling when terminating a process fails due to
+  an operating system error.
+
+### 1.5.8 - 2019-05-02
+- Fix bug which caused the node to become `unusable` when the ephemeral
+  drive was lost but the operating system drive was retained due to 
+  incorrectly attempting to create already existing pool scope user accounts.
+
 ### 1.5.7 - 2019-04-26
 - Improve retries on DNS resolution failures.
 - Retry up to a maximum of 3 times for a retryable task which fails in 
