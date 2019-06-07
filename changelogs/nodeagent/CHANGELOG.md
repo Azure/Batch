@@ -32,6 +32,11 @@ https://docs.microsoft.com/en-us/rest/api/batchservice/computenode/list#nodeagen
 
 ## Change Log
 
+### 1.5.11
+#### Released: 2019-06-05
+- Fix regression introduced in 1.5.10 where reboots or reimages could be 
+  delayed up to 15 minutes.
+
 ### 1.5.10
 #### Released: 2019-05-31
 - Fix bug where files with unicode characters in names were not properly 
