@@ -24,13 +24,30 @@ be created.
 ### Determining what version of the Batch Node Agent is on a Node
 Using a client targeting REST API version `2018-08-01.7.0` or
 newer call the [get compute node](
-https://docs.microsoft.com/en-us/rest/api/batchservice/computenode/get)
+https://docs.microsoft.com/rest/api/batchservice/computenode/get)
 or [list compute nodes](
-https://docs.microsoft.com/en-us/rest/api/batchservice/computenode/list)
+https://docs.microsoft.com/rest/api/batchservice/computenode/list)
 APIs and examine the `version` property of [nodeAgentInfo](
-https://docs.microsoft.com/en-us/rest/api/batchservice/computenode/list#nodeagentinformation).
+https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinformation).
 
 ## Change Log
+
+### 1.6.3
+#### Released: 2019-07-22
+- Add ability to mount remote file systems. Supported file system types are 
+  Blobfuse, CIFS/SMB, Azure Files, and NFS. Support for specifying remote 
+  file systems on a Pool will be in an upcoming Batch API version.
+- Improve error handling and reporting for nodes in `Unusable` state. 
+  Additional details about why the node is `Unusable` will now consistently
+  be available in the `errors` property on the 
+  [ComputeNode](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenode).
+- Allow custom ephemeral disk mount points and support additional 
+  common file system types for the ephemeral disk in Linux.
+- Support `OpenLogic CentOS-HPC 7.6`.
+- Fix bug where container image tags with uppercase characters were not
+  downloaded correctly.
+- Fix bug where tasks running as non-elevated users in Linux incorrectly 
+  had all of their groups cleared.
 
 ### 1.5.11
 #### Released: 2019-06-05
