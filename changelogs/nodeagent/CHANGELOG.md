@@ -32,6 +32,33 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.6.6
+#### Released: 2019-08-26
+- Nodes will now detect when the ephemeral disk is approaching full and 
+  will be marked as `Unusable` with a corresponding `NodeError`.
+  Running tasks will be requeued for execution elsewhere.
+- Allow delete, terminate, and disable job while the node is in `Unusable`
+  state, as long as no job release task is required to run.
+- Improve resource file download error messages.
+- Support for Ubuntu 14.04 dropped.
+- Reduced load on the scheduler by filtering what information is returned
+  during compute node initialization.
+- Fix bug where job release tasks would not run properly if the 
+  job preparation task was deleted due to retention time. When a job release 
+  task is run and the job preparation task has been cleaned up due to 
+  retention time the `AZ_BATCH_JOB_PREP_DIR` environment variable 
+  points to where the directory _was_ (it was deleted due to data 
+  retention time)
+- Fix bug where non-standard tasks such as the start task or 
+  job preparation task were being reported in task history 
+  (`RecentTasks` on the node) unintentionally.
+- Fix bug where parallel ongoing operations could corrupt state and cause
+  the node to be unable to perform new work.
+- Fix bug where during list file operations when an error occurred an 
+  incomplete file list with no continuation token would be returned rather
+  than an error.
+- Fix bug where `AZ_BATCH_POOL_ID` was not correctly preserving case.
+
 ### 1.6.3
 #### Released: 2019-07-22
 - Add ability to mount remote file systems. Supported file system types are 
