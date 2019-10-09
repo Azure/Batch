@@ -32,6 +32,28 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.7.1
+#### Released: 2019-10-09
+- Fix bug which caused the agent to deadlock when infinitely recursive 
+  environment variables were defined on a task.
+- Fix a number of rare bugs which could cause internal metadata corruption
+  and prevent tasks from being run.
+- Fix bug which caused the default-version application package environment
+  variable (e.g. `AZ_BATCH_APP_PACKAGE_Foo` for an application named `Foo`) 
+  to be unset when a pool level application was already installed 
+  and then a more recent task level package was installed.
+- Fix bug where DNS errors during `ResourceFile` download were incorrectly 
+  categorized as `BlobNotFound`.
+- Fix bug which prevented `NFSMountConfiguration` from functioning in cases
+  where the `nfs-common` package was not pre-installed on the operating system.
+- Fix bug where a task interrupted due to an unexpected reboot would appear in
+  the compute node's `RecentTasks` and also left task-related data on disk.
+- Fix bug where a job preparation task which had surpassed its data retention 
+  time would block that job from being deleted forever.
+- Fix bug where an internal error or pool shrink with `Requeue` option could
+  cause an interrupted `JobManager` task to incorrectly terminate the job
+  when `KillJobOnCompletion` was set to `true` on the `JobManager`.
+
 ### 1.6.6
 #### Released: 2019-08-26
 - Nodes will now detect when the ephemeral disk is approaching full and 
