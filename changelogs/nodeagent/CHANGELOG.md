@@ -32,6 +32,16 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.7.2
+#### Released: 2019-10-21
+- Add support for SR-IOV IB/RDMA devices with Docker containers.
+- Improve SSH daemon configuration on first boot for Linux VMs.
+- Slightly increase priority of node agent and controller processes 
+  on Linux to decrease probability of CPU starvation in situations 
+  of CPU over subscription which can help prevent unnecessary 
+  node recoveries.
+- Fix bug where some requests to Azure Storage were improperly retried.
+
 ### 1.7.1
 #### Released: 2019-10-09
 - Fix bug which caused the agent to deadlock when infinitely recursive 
