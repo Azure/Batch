@@ -32,6 +32,15 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.7.4
+#### Released: 2019-10-23
+- Fix rare bug where Linux nodes (usually CentOS) would immediately go into 
+  `Unusable` state after starting due to incorrectly detecting
+  the machine drive layout.
+- Fix bug which could cause tasks with `ContainerSettings` which had
+  a long `ContainerRunOptions` to fail to properly launch,
+  resulting in the task becoming stuck in `Running` state on the node. 
+
 ### 1.7.2
 #### Released: 2019-10-21
 - Add support for SR-IOV IB/RDMA devices with Docker containers.
