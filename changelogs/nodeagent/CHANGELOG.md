@@ -32,6 +32,18 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.7.5
+#### Released: 2019-12-06
+- Fix bug where the node did not correctly block new tasks from being 
+  scheduled when it detected the disk was full.
+- Fix bug which in rare cases could cause tasks run on nodes with 
+  `MaxTasksPerNode` > 1 to intermittently fail.
+- Fix bug which could cause a task to fail when it referenced a specific
+  `ApplicationPackage` version if the `Application` had a different 
+  default version which was not referenced.
+- Fixed bug which could cause Linux nodes to be `Unusable` due to issues
+  with the SSH service.
+
 ### 1.7.4
 #### Released: 2019-10-23
 - Fix rare bug where Linux nodes (usually CentOS) would immediately go into 
