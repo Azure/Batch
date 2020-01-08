@@ -32,6 +32,25 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.7.6
+#### Released: 2020-01-07
+- Fix bug which could cause terminate job to get stuck in some cases.
+- Fix bug where Job Preparation tasks would not retry more than 3 times 
+  even if they had been configured to do so.
+- Fix bug where after a node ran out of disk space it would have one or 
+  more tasks stuck in `Running` state and not respond to reboot requests.
+- Fix bug which could cause tasks with dependencies configured to fail on 
+  some non-English locales.
+- Fix bug where a `ResourceFile` with an Azure Storage container URL specified
+  would not correctly download files from a container with public access 
+  configured.
+- Fix bug which in rare cases could cause deletion of multi-instance subtasks 
+  to get stuck.
+- Improve error handling for disk full in Linux where the file system has 
+  run out of free inodes.
+- Improve error message reported when a task has run out of wall clock time 
+  and is terminated.
+
 ### 1.7.5
 #### Released: 2019-12-06
 - Fix bug where the node did not correctly block new tasks from being 
