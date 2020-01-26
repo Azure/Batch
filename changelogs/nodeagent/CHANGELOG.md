@@ -32,6 +32,23 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.7.8
+#### Released: 2020-01-24
+- Fix bug which could cause a node to get stuck in the `Unusable` state if
+  a multi-instance task was deleted shortly after it completed.
+
+### 1.7.7
+#### Released: 2020-01-17
+- Add Debian 9/10 support for blobfuse mounts (specified in 
+  `MountConfiguration` on the `Pool`). Note that Debian 10 support is not yet
+  available in Batch but is coming soon.
+- Add CentOS 8 support for NFS/CIFS/Azure Files (specified in 
+  `MountConfiguration` on the `Pool`). Note that CentOS 8 support is not yet
+  available in Batch but is coming soon.
+- Fix bug which could cause nodes to block Pool resize and be unable 
+  to reboot when they ran out of disk space.
+- Improve error message if PATH not set in Windows.
+
 ### 1.7.6
 #### Released: 2020-01-07
 - Fix bug which could cause terminate job to get stuck in some cases.
