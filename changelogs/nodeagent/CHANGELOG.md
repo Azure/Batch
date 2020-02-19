@@ -32,6 +32,23 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.7.10
+#### Released: 2020-02-14
+- Fix bug where certificates installed to the "CurrentUser" store
+  on Windows could have inaccessible private keys for short periods of time 
+  when the pool had `MaxTasksPerNode` greater than 1 and tasks were run 
+  with `UserScope` `Pool`.
+    - This was caused by tasks reinstalling the certificate into the certificate 
+      store each time they launched.
+- Fix bug where the `FailureInfo` property of the `StartTask` could persist 
+  through retries, causing a successful `StartTask` to look like it had 
+  failed.
+
+### 1.7.9
+#### Released: 2020-01-30
+- Fix bug where `Task` scope `AutoUser` profiles were not properly deleted.
+- Fix bug preventing `blobfuse` installation in some cases.
+
 ### 1.7.8
 #### Released: 2020-01-24
 - Fix bug which could cause a node to get stuck in the `Unusable` state if
