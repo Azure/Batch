@@ -32,6 +32,14 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.7.14
+#### Released: 2020-03-07
+- Always append a \n to empty certificate password files in Linux.
+  OpenSSL expects a newline if the file is otherwise empty.
+- Add new disk reserved space environment variable.
+- Fix bug where container task terminate can fail.
+- Improve error handling for container pull.
+
 ### 1.7.10
 #### Released: 2020-02-14
 - Fix bug where certificates installed to the "CurrentUser" store
