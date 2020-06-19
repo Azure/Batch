@@ -32,11 +32,30 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.8.2
+#### Released: 2020-06-09
+- Fix bug where the node agent could get in a bad state if too many requests are
+  sent concurrently.
+- Fix a race condition for customers using temporary disk encryption which
+  resulted in nodes being `unusable`.
+- Fix bug when using per-job Virtual Network injection.
+- Linux pools now expose another environment variable for application package
+  references which preserves case `AZ_BATCH_APP_PACKAGE_{Application}_{Version}`
+  in addition to the existing `AZ_BATCH_APP_PACKAGE_{APPLICATION}_{VERSION}`.
+- Optimize setup steps for pools with specified `MountConfiguration`.
+
+### 1.8.0
+#### Released: 2020-05-04
+- Improve error messages for user login failures.
+
 ### 1.7.14
 #### Released: 2020-03-07
-- Always append a \n to empty certificate password files in Linux.
+- Append a `\n` to empty certificate password files in Linux.
   OpenSSL expects a newline if the file is otherwise empty.
-- Add new disk reserved space environment variable.
+- Add a new environment variable for Batch Node Agent reserved 
+  disk space: `AZ_BATCH_RESERVED_DISK_SPACE_BYTES`.
+- Add a new environment variable for the Start Task working directory:
+  `AZ_BATCH_NODE_STARTUP_WORKING_DIR`.
 - Fix bug where container task terminate can fail.
 - Improve error handling for container pull.
 
