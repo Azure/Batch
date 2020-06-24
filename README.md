@@ -16,16 +16,17 @@ the [Microsoft Azure Batch](https://aka.ms/batch) service.
 
 * [Technical overview](https://docs.microsoft.com/azure/batch/batch-technical-overview)
 * [Documentation](https://docs.microsoft.com/azure/batch/)
-* [Region availability](https://azure.microsoft.com/global-infrastructure/services/)
+* [Region availability](https://azure.microsoft.com/global-infrastructure/services/?products=batch)
 
 ### Community
 
 * [Stack Overflow azure-batch tagged questions](https://stackoverflow.com/questions/tagged/azure-batch)
-* [MSDN Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch) -
-please post new questions under [GitHub issues](https://github.com/Azure/Batch/issues)
-or Stack Overflow
-* [User Voice](https://feedback.azure.com/forums/269742-batch) - please use
-[GitHub issues](https://github.com/Azure/Batch/issues) instead
+* [Microsoft Q&A azure-batch tagged questions](https://docs.microsoft.com/answers/questions/topics/single/25342.html)
+* _Read-Only:_ [MSDN Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch) -
+please post new questions under [GitHub issues](https://github.com/Azure/Batch/issues),
+[Microsoft Q&A](https://docs.microsoft.com/answers/questions/topics/single/25342.html),
+or [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-batch)
+* [User Voice](https://feedback.azure.com/forums/269742-batch)
 
 ### Batch Tooling and Samples
 
@@ -50,15 +51,17 @@ backend on Azure Batch for the foreach package in R
 ### Other Tooling
 * [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/):
 manage contents of your Azure Storage accounts with a cross-platform UI
+* [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10):
+data transfer tool for Azure Storage
 * [blobxfer](https://github.com/Azure/blobxfer): cross-platform Azure storage
 data movement tool
-* [Fast Data Transfer](https://www.microsoft.com/en-us/garage/profiles/fast-data-transfer/):
-high-speed data loader for Azure
 
-## Related Services
+## Related Products and Services
 
 * [Azure Batch Rendering](https://azure.microsoft.com/services/batch/rendering/)
+* [Azure CycleCloud](https://azure.microsoft.com/features/azure-cyclecloud/)
 * [Azure Machine Learning Compute](https://azure.microsoft.com/services/machine-learning-service/)
+* [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview)
 
 * * *
 
