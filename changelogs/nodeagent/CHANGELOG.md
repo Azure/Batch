@@ -32,6 +32,12 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.8.3
+#### Released: 2020-06-30
+- Fix regression in `CloudServiceConfiguration` pools where nodes would get stuck in unusable after reboot.
+- Improve error handling during resource file download failure due to DNS resolution failures.
+- Fix bug where data was not cleaned up properly for `JobPreparationTask` when enabled for re-execution on reboot.
+
 ### 1.8.2
 #### Released: 2020-06-09
 - Fix bug where the node agent could get in a bad state if too many requests are
