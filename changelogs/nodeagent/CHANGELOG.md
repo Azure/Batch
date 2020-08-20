@@ -32,6 +32,19 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.8.5
+#### Released: 2020-08-10
+- Fix bug on newly provisioned Windows nodes failing to transition to `idle` in `VirtualMachineConfiguration` pools.
+
+### 1.8.4
+#### Released: 2020-08-04
+- Fix bug where uploading output files could fail due to intermittent DNS failures.
+- Fix bug in node preparation where some classifications of timeout errors were no longer being retried.  
+- Fix bug where spawning the process for a task could fail in rare cases.
+- Nodes will now detect when the OS disk is approaching being full and 
+  will be marked as `Unusable` with a corresponding `NodeError`.
+  Running tasks will be requeued for execution elsewhere.
+
 ### 1.8.3
 #### Released: 2020-06-30
 - Fix regression in `CloudServiceConfiguration` pools where nodes would get stuck in unusable after reboot.
