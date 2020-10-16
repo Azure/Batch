@@ -32,6 +32,16 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.8.7
+#### Released: 2020-09-29
+- Fix issue in application package download retry logic.
+- Application package and container image downloads will now transition the respective task into `running` state.
+  Prior to this the task would remain in `active` state until these actions completed.
+
+### 1.8.6
+#### Released: 2020-09-09
+- Add support for [variable slots scheduling](https://docs.microsoft.com/azure/batch/batch-parallel-node-tasks).
+
 ### 1.8.5
 #### Released: 2020-08-10
 - Fix bug on newly provisioned Windows nodes failing to transition to `idle` in `VirtualMachineConfiguration` pools.
