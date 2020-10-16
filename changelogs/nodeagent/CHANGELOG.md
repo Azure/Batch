@@ -40,7 +40,7 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ### 1.8.6
 #### Released: 2020-09-09
-- Add support for [variable slots scheduling](https://docs.microsoft.com/en-us/azure/batch/batch-parallel-node-tasks).
+- Add support for [variable slots scheduling](https://docs.microsoft.com/azure/batch/batch-parallel-node-tasks).
 
 ### 1.8.5
 #### Released: 2020-08-10
