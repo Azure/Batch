@@ -32,6 +32,12 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.9.3
+#### Released: 2021-02-02
+- Add additional error code to better communicate task terminations cause.
+- Fix issue in mounting NFS due to support packages sometimes being incorrectly detected as installed.
+- Added support for using images based on Ubuntu 20.04.
+
 ### 1.8.7
 #### Released: 2020-09-29
 - Fix issue in application package download retry logic.
