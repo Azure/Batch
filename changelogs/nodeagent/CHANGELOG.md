@@ -32,6 +32,27 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.9.9
+#### Released: 2021-04-21
+- ApplicationPackage zip files are now deleted after successful unpacking
+- Added FILE_NO_FOUND as a retryable error when downloading container images
+- Fixed file lock race condition in windows bootstrap introduced in 1.9.7
+
+### 1.9.8
+#### Released: 2021-03-22
+- Standard tasks will now be rescheduled on an internal error instead of being retried locally
+
+### 1.9.7
+#### Released: 2021-03-22
+- Added retries on some Windows Docker pipe errors
+
+### 1.9.6
+#### Released: 2021-02-25
+- Fix issue where RHEL based images would not start.
+- Add support for RHEL 8 based images.
+- Fix issue where downloading resource files could be retried forever. Tasks will now eventually fail with `ResourceDownloadTimedOut` and be eligible for retries.
+- Change functionality where the agent would retry a task and increment its `retryCount` on failure up to three times if `maxTaskRetryCount` was set, prior to yielding the task to be rescheduled.  This behavior has changed to yield the task after the first failure.
+
 ### 1.9.3
 #### Released: 2021-02-02
 - Add additional error code to better communicate task terminations cause.
