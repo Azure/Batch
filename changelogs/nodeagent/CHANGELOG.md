@@ -32,6 +32,13 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.9.10
+#### Released: 2021-05-17
+- Added retries on Windows for Docker initialize calls to improve stability
+- Fix regression which caused SRIOV enabled VM sizes to be unusable
+- Fix regression which caused all file upload errors to be classified as internal errors.
+- Improved logging
+
 ### 1.9.9
 #### Released: 2021-04-21
 - ApplicationPackage zip files are now deleted after successful unpacking
