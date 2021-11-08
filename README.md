@@ -26,7 +26,7 @@ the [Microsoft Azure Batch](https://aka.ms/batch) service.
 please post new questions under [GitHub issues](https://github.com/Azure/Batch/issues),
 [Microsoft Q&A](https://docs.microsoft.com/answers/questions/topics/single/25342.html),
 or [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-batch)
-* [User Voice](https://feedback.azure.com/forums/269742-batch)
+* [Ideas Community Feedback](https://feedback.azure.com/d365community/forum/7462aa60-0c25-ec11-b6e6-000d3a4f07b8)
 
 ### Batch Tooling and Samples
 
@@ -58,10 +58,10 @@ data movement tool
 
 ## Related Products and Services
 
-* [Azure Batch Rendering](https://azure.microsoft.com/services/batch/rendering/)
 * [Azure CycleCloud](https://azure.microsoft.com/features/azure-cyclecloud/)
 * [Azure Machine Learning Compute](https://azure.microsoft.com/services/machine-learning-service/)
 * [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview)
+* [Rendering with Azure HPC](https://azure.microsoft.com/solutions/high-performance-computing/rendering/)
 
 * * *
 
