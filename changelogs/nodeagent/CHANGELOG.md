@@ -32,6 +32,22 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.9.24
+#### Released: 2022-02-04
+- Remove infinite retries when attempting to persist state to storage.
+- Fix issue where Windows nodes would enter an unusable state if the Docker daemon took longer than expected to come up.
+- Fix issue causing 5 minute delays when attempting to mount Azure NFS 3.0 due to lack of support for a diagnostic probe call.
+- Improved recovery logic when nodes fail to join a pool.
+- Managed Identity support for customer facing Azure services.
+- Allow the node agent to function in images without a /sys folder.
+- Improved behavior regarding losing disks after events including preemption
+- Deprecated Ubuntu 16.04 NodeAgentSku
+- Add EL8 NodeAgentSku for RHEL like images including Centos, Alma, and Rocky distributions.
+- Update upload files internal errors to be deemed retryable
+- Add support for specifying HTTP headers to be used when uploading output files.
+- Improved error handling around creating users.
+- Improved handling regarding network issues while joining pool.
+
 ### 1.9.10
 #### Released: 2021-05-17
 - Added retries on Windows for Docker initialize calls to improve stability
