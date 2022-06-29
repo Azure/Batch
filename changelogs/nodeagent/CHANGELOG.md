@@ -32,6 +32,23 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.9.28
+#### Released: 2022-06-17
+- Fix issue with Windows SSL handling
+- Fix issue which wrongly reporting RDMA enabled on some particular VM SKUs
+- Fix issue where large output files could fail due too invalid XML error messages.
+- Fix issue where deleting jobs with a large amount of tasks could result in deadlock.
+- Remove Support for the following NodeAgentSku's
+  - CentOS 8
+  - Debian 8
+  - Debian 9
+- Improved logging when using containers
+- Added support for multi-instance tasks to be retried.
+
+## 1.9.27
+#### Released: 2022-05-07
+- Fix client authentication
+
 ### 1.9.24
 #### Released: 2022-02-04
 - Remove infinite retries when attempting to persist state to storage.
