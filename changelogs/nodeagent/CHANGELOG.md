@@ -19,7 +19,8 @@ All new Azure Batch pools are automatically provisioned with the latest
 Node Agent, unless the Azure Batch team deems it necessary to limit or 
 rollback a certain version due to possible customer impacting concerns.
 In order to get the latest version of the Batch Node Agent, a new pool should
-be created.
+be created or the pool should be resized to 0 nodes and then back to the
+desired target node count.
 
 ### Determining what version of the Batch Node Agent is on a Node
 Using a client targeting REST API version `2018-08-01.7.0` or
@@ -45,7 +46,7 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 - Improved logging when using containers
 - Added support for multi-instance tasks to be retried.
 
-## 1.9.27
+### 1.9.27
 #### Released: 2022-05-07
 - Fix client authentication
 
