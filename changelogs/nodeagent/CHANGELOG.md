@@ -33,6 +33,13 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.9.29
+#### Released: 2022-07-19
+- Added NodeAgentSku support for Ubuntu 22.04
+- Fix VNet injection issue when container fails to start
+- Improve retry logic for HTTP requests
+- Improve security of generated passwords
+
 ### 1.9.28
 #### Released: 2022-06-17
 - Fix issue with Windows SSL handling
