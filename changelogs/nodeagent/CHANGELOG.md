@@ -33,6 +33,14 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.9.30
+#### Released: 2022-09-16
+- Fixed 429 rate limiting errors when querying IMDS for managed identity tokens.
+- ACR credentials when using managed identities are automatically refreshed when they expire.
+- Fixed handling long filenames during task garbage collection.
+- 7-Zip is now the preferred compression tool on Windows for agent decompression during installation.
+- Fixed an issue where a compute node could get stuck yielding tasks after encountering disk full error.
+
 ### 1.9.29
 #### Released: 2022-07-19
 - Added NodeAgentSku support for Ubuntu 22.04
