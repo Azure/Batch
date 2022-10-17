@@ -5,7 +5,7 @@ the [Microsoft Azure Batch](https://aka.ms/batch) service.
 * [Announcements](https://github.com/Azure/Batch/tree/master/announcements)
 * [Issue Tracking](https://github.com/Azure/Batch/issues)
     * [Notices](https://github.com/Azure/Batch/labels/notice)
-    * [Retirements](* [Questions](https://github.com/Azure/Batch/labels/retirement)
+    * [Retirements](https://github.com/Azure/Batch/labels/retirement)
     * [Known issues](https://github.com/Azure/Batch/labels/known%20issue)
     * [Questions](https://github.com/Azure/Batch/labels/question)
 * [Status](https://azure.microsoft.com/status/)
