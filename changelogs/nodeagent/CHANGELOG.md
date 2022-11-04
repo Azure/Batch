@@ -33,9 +33,21 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.9.33
+#### Released: 2022-11-04
+- Resolved CVE-2022-3602 for vulnerable Node Agent SKUs.
+
+### 1.9.32
+#### Released: 2022-10-25
+- Fixed Managed Identity support in Sovereign Clouds.
+
+### 1.9.31
+#### Released: 2022-10-04
+- Socket read timeouts on chunked resource file downloads were not correctly retried.
+
 ### 1.9.30
 #### Released: 2022-09-16
-- Fixed 429 rate limiting errors when querying IMDS for managed identity tokens.
+- Fixed rate limiting errors when querying IMDS for managed identity tokens.
 - ACR credentials when using managed identities are automatically refreshed when they expire.
 - Fixed handling long filenames during task garbage collection.
 - 7-Zip is now the preferred compression tool on Windows for agent decompression during installation.
