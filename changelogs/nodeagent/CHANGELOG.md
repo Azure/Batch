@@ -35,7 +35,7 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ### 1.9.33
 #### Released: 2022-11-04
-- Resolved CVE-2022-3602 for vulnerable Node Agent SKUs.
+- Resolved CVE-2022-3602 and CVE-2022-3786 for vulnerable Node Agent SKUs.
 
 ### 1.9.32
 #### Released: 2022-10-25
