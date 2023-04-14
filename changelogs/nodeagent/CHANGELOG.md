@@ -33,6 +33,14 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.9.42
+#### Released: 2023-04-12
+- Add EL9 NodeAgentSku for RHEL like images.
+- Fix ACR login error.
+- Add corrupt executable as a non-retryable error
+- Sign external exe's with the correct profile
+- Resolved CVE-2023-0286 for vulnerable Node Agent SKUs.
+
 ### 1.9.33
 #### Released: 2022-11-04
 - Resolved CVE-2022-3602 and CVE-2022-3786 for vulnerable Node Agent SKUs.
