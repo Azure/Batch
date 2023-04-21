@@ -33,6 +33,13 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.9.43
+#### Released: 2023-04-19
+- Recover if a VM cannot communicate with storage and retry when out of ports
+- Convert path ownership to async for critical methods
+- Retry on incomplete payload error
+- Handling exception from terminate running task and perform escalating recovery.
+
 ### 1.9.42
 #### Released: 2023-04-12
 - Add EL9 NodeAgentSku for RHEL like images.
