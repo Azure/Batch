@@ -33,19 +33,26 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.10.0
+#### Released: 2023-06-27
+- Add retries for Docker(dockerpy) create due to intermittent failures on first task.
+- Add containerd support.
+- Add retries when mount installation fails.
+- Add timeout setting for mount operation.
+
 ### 1.9.43
 #### Released: 2023-04-19
-- Recover if a VM cannot communicate with storage and retry when out of ports
-- Convert path ownership to async for critical methods
-- Retry on incomplete payload error
+- Recover if a VM cannot communicate with storage and retry when out of ports.
+- Convert path ownership to async for critical methods.
+- Retry on incomplete payload error.
 - Handling exception from terminate running task and perform escalating recovery.
 
 ### 1.9.42
 #### Released: 2023-04-12
 - Add EL9 NodeAgentSku for RHEL like images.
 - Fix ACR login error.
-- Add corrupt executable as a non-retryable error
-- Sign external exe's with the correct profile
+- Add corrupt executable as a non-retryable error.
+- Sign external exe's with the correct profile.
 - Resolved CVE-2023-0286 for vulnerable Node Agent SKUs.
 
 ### 1.9.33
