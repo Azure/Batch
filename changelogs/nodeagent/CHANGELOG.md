@@ -33,18 +33,24 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.10.7
+#### Released: 2023-08-25
+- Tasks that are currently running on a VM were not rejected if they tried to be scheduled again.
+- The maximum task history was previously limited to 10 items.
+- Filesystem mounting would incorrectly terminate when waiting for unattended-upgrades to finish. 
+- Downloading app packages could get into an endless loop if managed identity was incorrectly configured.
+- Deleting a task could sometimes cause a race condition where the task state would be lost.
+- Ubuntu 18.04 has been deprecated per OS being EOL.
+- Debian 10 has been deprecated per OS being EOL.
+- Certain windows images would fail to bootstrap if they had both Docker and Containerd services installed.
+- Added Blobfuse support for ubuntu 22.04.
+
 ### 1.10.0
 #### Released: 2023-06-27
 - Add retries for Docker(dockerpy) create due to intermittent failures on first task.
 - Add containerd support.
 - Add retries when mount installation fails.
 - Add timeout setting for mount operation.
-
-### 1.9.43
-#### Released: 2023-04-19
-- Recover if a VM cannot communicate with storage and retry when out of ports.
-- Convert path ownership to async for critical methods.
-- Retry on incomplete payload error.
 
 ### 1.9.43
 #### Released: 2023-04-19
