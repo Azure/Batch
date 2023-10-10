@@ -33,6 +33,15 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.10.9
+#### Released: 2023-09-20
+-  Increased max connection limit when making Azure Storage calls to limit timeout errors when downloading many resource files.
+
+### 1.10.8
+#### Released: 2023-09-05
+- Resolved CVE-2023-38325
+- Increased timeout before failing when trying to authenticate to AutoStorage configured with a managed identity.
+
 ### 1.10.7
 #### Released: 2023-08-25
 - Tasks that are currently running on a VM were not rejected if they tried to be scheduled again.
