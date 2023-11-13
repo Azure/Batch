@@ -33,18 +33,41 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.11.3
+#### Released: 2023-11-06
+- Pool certificates on Linux are no longer returned for GetFile, GetFileProperties, and ListFiles APIs.
+- Fix issue where files not in AZ_BATCH_NODE_ROOT_DIR were allowed via GetFile and GetFileProperties.
+- Added support for Virtual Machine with no local temporary disk. Not all Virtual Machine SKUs without local temporary disks will be supported. Please consult the [List Supported Virtual Machine Sizes](https://learn.microsoft.com/rest/api/batchmanagement/location/list-supported-virtual-machine-skus) API for more information.
+- Recheck local cache before making repeat IMDS queries on retries.
+- Default Docker client response timeout increased to 5 minutes.
+
+### 1.10.9
+#### Released: 2023-09-20
+- Increased max connection limit when making Azure Storage calls to limit timeout errors when downloading many resource files.
+
+### 1.10.8
+#### Released: 2023-09-05
+- Resolved CVE-2023-38325
+- Increased timeout before failing when trying to authenticate to AutoStorage configured with a managed identity.
+
+### 1.10.7
+#### Released: 2023-08-25
+- Tasks that are currently running on a VM were not rejected if they tried to be scheduled again.
+- The maximum task history was previously limited to 10 items.
+- Filesystem mounting would incorrectly terminate when waiting for unattended-upgrades to finish. 
+- Downloading app packages could get into an endless loop if managed identity was incorrectly configured.
+- Deleting a task could sometimes cause a race condition where the task state would be lost.
+- Ubuntu 18.04 has been deprecated per OS being EOL.
+- Debian 10 has been deprecated per OS being EOL.
+- Certain windows images would fail to bootstrap if they had both Docker and Containerd services installed.
+- Added Blobfuse support for ubuntu 22.04.
+
 ### 1.10.0
 #### Released: 2023-06-27
 - Add retries for Docker(dockerpy) create due to intermittent failures on first task.
 - Add containerd support.
 - Add retries when mount installation fails.
 - Add timeout setting for mount operation.
-
-### 1.9.43
-#### Released: 2023-04-19
-- Recover if a VM cannot communicate with storage and retry when out of ports.
-- Convert path ownership to async for critical methods.
-- Retry on incomplete payload error.
 
 ### 1.9.43
 #### Released: 2023-04-19
