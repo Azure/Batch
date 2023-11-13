@@ -33,9 +33,17 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.11.3
+#### Released: 2023-11-06
+- Pool certificates on Linux are no longer returned for GetFile, GetFileProperties, and ListFiles APIs.
+- Fix issue where files not in AZ_BATCH_NODE_ROOT_DIR were allowed via GetFile and GetFileProperties.
+- Added support for Virtual Machine with no local temporary disk. Not all Virtual Machine SKUs without local temporary disks will be supported. Please consult the [List Supported Virtual Machine Sizes](https://learn.microsoft.com/rest/api/batchmanagement/location/list-supported-virtual-machine-skus) API for more information.
+- Recheck local cache before making repeat IMDS queries on retries.
+- Default Docker client response timeout increased to 5 minutes.
+
 ### 1.10.9
 #### Released: 2023-09-20
--  Increased max connection limit when making Azure Storage calls to limit timeout errors when downloading many resource files.
+- Increased max connection limit when making Azure Storage calls to limit timeout errors when downloading many resource files.
 
 ### 1.10.8
 #### Released: 2023-09-05
