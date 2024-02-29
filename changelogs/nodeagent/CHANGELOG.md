@@ -33,6 +33,19 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.11.8
+#### Released: 2024-02-02
+- Re-establish the Docker client and retry when ImageNodeFound errors occur when creating containers.
+- Return specific error code for when a task is terminated due to wall clock time being exceeded.
+- Temporary disks were incorrectly handled for `CloudServiceConfiguration` pools.
+
+### 1.11.5
+#### Released: 2023-11-29
+- Fix bug Reactivate failed task cannot work.
+- Fix bug tvm stucking joinPoolInProgress.
+- Fix bug Task remains in running state in Azure Portal while Job was ended by Customer.
+- Fix CVE-2023-37276 and GHSA-v8gr-m533-ghj9.
+
 ### 1.11.3
 #### Released: 2023-11-06
 - Pool certificates on Linux are no longer returned for GetFile, GetFileProperties, and ListFiles APIs.
