@@ -33,6 +33,13 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.11.11
+#### Released: 2024-05-06
+- Fix issue with local temp disk mount with containers.
+- Support up to 150 tasklets for multi-instance tasks.
+- Fix CVE-2023-49081, CVE-2023-50782, CVE-2023-26130, CVE-2023-22190.
+- Support new path isolation options for container tasks.
+
 ### 1.11.8
 #### Released: 2024-02-02
 - Re-establish the Docker client and retry when ImageNodeFound errors occur when creating containers.
