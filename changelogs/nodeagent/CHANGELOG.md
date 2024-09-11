@@ -33,6 +33,14 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.12.2
+#### Released: 2024-08-07
+- Update most of non-retryable task running errors into retryable errors.
+- Fix CVE issues CVE-2024-21503, CVE-2024-3651, CVE-2024-27306.
+- CentOS7 has been deprecated per OS being EOL.
+- Add Ubuntu24.04 NodeAgentSku.
+- Fix Node Agent temporary disk wrong path issue for Linux VM with Azure Disk Encryption enabled.
+
 ### 1.11.11
 #### Released: 2024-05-06
 - Fix issue with local temp disk mount with containers.
