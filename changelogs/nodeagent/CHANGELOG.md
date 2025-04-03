@@ -33,6 +33,11 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ## Change Log
 
+### 1.12.15
+#### Released: 2025-03-26
+- Support Azure Linux 3.0.
+- Support blobfuse2 for EL9.
+
 ### 1.12.7
 #### Released: 2024-10-17
 - Fix uid reuse for task autouser in Linux.
