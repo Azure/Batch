@@ -3,8 +3,33 @@
 ## Service Updates
 The following links are official service update communications in reverse
 chronological order. You can find the complete list
-[here](https://azure.microsoft.com/updates/?product=batch).
+[here](https://azure.microsoft.com/updates/?filters=%5B%22Batch%22%5D).
 
+* [2024-10-03](https://azure.microsoft.com/updates/?id=ncv3-series-vm-family-support-in-azure-batch-pools-retirement)
+* [2024-03-29](https://azure.microsoft.com/updates/?id=support-for-basic-and-standard-aseries-vm-families-support-will-be-retired-on-31-august-2024-for-batch-pools)
+* [2024-03-29](https://azure.microsoft.com/updates/?id=support-for-ubuntu-2004-lts-for-batch-pools-will-be-retired-on-23-april-2025)
+* [2023-09-29](https://azure.microsoft.com/updates/?id=support-for-select-marketplace-images-for-batch-pools-will-be-retired)
+* [2023-09-29](https://azure.microsoft.com/updates/?id=azure-batch-pool-list-usage-metrics-api-will-be-retired-on-30-september-2024)
+* [2023-09-29](https://azure.microsoft.com/updates/?id=azure-batch-cli-extensions-will-be-retired-on-30-september-2024)
+* [2023-09-29](https://azure.microsoft.com/updates/?id=azure-batch-task-authentication-token-will-be-retired-on-30-september-2024)
+* [2023-03-24](https://azure.microsoft.com/updates/?id=batch-custom-image-pools-using-vhd-or-managed-images-will-be-retired-on-31-march-2024)
+* [2023-03-24](https://azure.microsoft.com/updates/?id=batch-service-in-select-regions-will-be-retired-on-31-march-2026)
+* [2023-03-17](https://azure.microsoft.com/updates/?id=select-batch-pool-autoscale-servicedefined-variables-will-be-retired-on-31-march-2024)
+* [2023-03-77](https://azure.microsoft.com/updates/?id=azure-batch-classic-compute-node-communication-model-will-be-retired-on-31-march-2026)
+* [2022-10-07](https://azure.microsoft.com/updates/?id=azure-batch-certificates-will-be-retired-on-29-february-2024)
+* [2022-10-07](https://azure.microsoft.com/updates/?id=azure-batch-pools-without-public-ip-addresses-classic-will-be-retired-on-31-march-2023)
+* [2022-09-30](https://azure.microsoft.com/updates/?id=azure-batch-low-priority-vms-will-be-retired-on-30-september-2025)
+* [2022-09-30](https://azure.microsoft.com/updates/?id=azure-batch-jobpool-lifetime-statistics-api-will-be-retired-on-30-april-2023)
+* [2022-09-30](https://azure.microsoft.com/updates/?id=azure-batch-tls-1011-will-be-retired-on-31-march-2023)
+* [2021-08-30](https://azure.microsoft.com/updates/?id=azure-batch-updates-august2021)
+* [2021-08-19](https://azure.microsoft.com/updates/?id=azure-batch-new-vm-series-august2021)
+* [2021-03-25](https://azure.microsoft.com/updates/?id=azure-batch-new-vm-series-march2021)
+* [2021-02-24](https://azure.microsoft.com/updates/?id=azure-batch-rendering-vm-images-licensing-will-be-retired-on-29-february-2024)
+* [2021-02-22](https://azure.microsoft.com/en-us/updates/?id=azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024)
+* [2020-12-01](https://azure.microsoft.com/updates/?id=vm-series-vcpu-quota-enforcement)
+* [2020-10-30](https://azure.microsoft.com/updates/?id=azure-batch-updates-october2020)
+* [2020-10-30](https://azure.microsoft.com/updates/?id=azure-batch-updates-preview-october2020)
+* [2020-10-26](https://azure.microsoft.com/updates/?id=azure-batch-new-vm-series-october2020)* 
 * [2020-06-16](https://azure.microsoft.com/updates/azure-private-link-for-azure-batch-is-now-generally-available-in-select-regions/)
 * [2020-01-15](https://azure.microsoft.com/updates/azure-batch-updates-december-2019/)
 * [2019-04-22](https://azure.microsoft.com/updates/azure-batch-updates-april-2019/)
