@@ -1,22 +1,22 @@
 # Azure Batch Node Agent Change Log
 ### About the Batch Node Agent
-The Batch Node Agent executes customer-defined tasks on compute nodes 
-within a pool. This includes any actions that must be performed on the 
+The Batch Node Agent executes customer-defined tasks on compute nodes
+within a pool. This includes any actions that must be performed on the
 compute nodes themselves including (but not limited to) preparation,
 reporting, maintenance, execution, and removal of said tasks.
 
 ### A Note on Dates
 Next to each version below, a date is given. Due to the global nature of the
-Azure Batch service, new versions of the agent are not available in every 
+Azure Batch service, new versions of the agent are not available in every
 region simultaneously upon release. The date given below each version is
-the date the new version begins deployment to all supported regions. It is 
+the date the new version begins deployment to all supported regions. It is
 the _earliest possible_ time you could see the new agent version. There is
-no guarantee that a pool has a particular version of the agent even if 
+no guarantee that a pool has a particular version of the agent even if
 it was created after the release date of that version.
 
 ### Getting the Latest Version of the Batch Node Agent
-All new Azure Batch pools are automatically provisioned with the latest 
-Node Agent, unless the Azure Batch team deems it necessary to limit or 
+All new Azure Batch pools are automatically provisioned with the latest
+Node Agent, unless the Azure Batch team deems it necessary to limit or
 rollback a certain version due to possible customer impacting concerns.
 In order to get the latest version of the Batch Node Agent, a new pool should
 be created or the pool should be resized to 0 nodes and then back to the
@@ -32,6 +32,47 @@ APIs and examine the `version` property of [nodeAgentInfo](
 https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinformation).
 
 ## Change Log
+
+
+### 1.12.50
+#### Released: 2026-02-11
+- Fixed a potential issue where async operations during Windows user impersonation could cause permission errors.
+- Added preliminary support for VM SKUs with NVMe-based temporary disks (e.g., Dadsv6).
+- Fixed file deletion on Windows to return a specific "file in use" error when a sharing violation occurs.
+- Fixed an issue where blobfuse unmount could incorrectly match mount paths with similar prefixes (e.g., `mount-data` matching `mount-data-pipeline`).
+- Tasks terminated due to exceeding the maximum wall clock time now report a specific `MaxWallClockTimeExceeded` error instead of a generic failure.
+- Fixed disk I/O stats collection in environments where the OS does not support the feature (e.g., containers).
+- Added ARM64 support for RHEL8.
+
+### 1.12.39
+#### Released: 2025-12-10
+- Fixed a crash caused by a missing or corrupt agent configuration file; the agent now falls back to defaults.
+- Scheduling error details are now always scrubbed of sensitive information.
+- Fixed an issue where dpkg interruptions could cause repeated blobfuse installation failures on Linux.
+- Fixed an issue where compute nodes could become unusable prior to joining a pool.
+- Fixed ACR OAuth token exchange to properly handle non-200 responses and missing refresh tokens.
+- Resolved CVE-2025-4565 by upgrading protobuf.
+
+### 1.12.34
+#### Released: 2025-10-15
+- Added redaction of AWS secret access keys from log output.
+- Added automatic scrubbing of sensitive data in error-level logs.
+- Fixed internal task scheduling error mismatches.
+- Fixed an issue where job preparation task failures were not correctly reported as the reason for subsequent task failures.
+- Fixed an issue where blobfuse mounts would break after an agent restart without a reboot, causing the node to become unusable.
+- Added ARM64 support for Ubuntu 24.04 and EL9.
+- Fixed an issue where concurrent multi-task scheduling could cause state persistence failures.
+- Added ARM64 support for Azure Linux 3.0.
+
+### 1.12.24
+#### Released: 2025-07-26
+- Fixed a deprecated function call that could cause errors with newer OS package versions.
+- Added retries for Windows user profile creation to handle intermittent timeouts.
+- Fixed Azure Storage account key leaks in log output by adding redaction.
+- Resolved CVE-2025-47273 by upgrading setuptools.
+- Fixed an issue where tasks could be stuck in an infinite SAS token request loop.
+- Fixed a permission denied error when reading the file uploader configuration by adding retry logic.
+- Added blobfuse mounting support for national Azure clouds, including Bleu, Delos, and GovSG environments.
 
 ### 1.12.19
 #### Released: 2025-06-09
@@ -98,7 +139,7 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 #### Released: 2023-08-25
 - Tasks that are currently running on a VM were not rejected if they tried to be scheduled again.
 - The maximum task history was previously limited to 10 items.
-- Filesystem mounting would incorrectly terminate when waiting for unattended-upgrades to finish. 
+- Filesystem mounting would incorrectly terminate when waiting for unattended-upgrades to finish.
 - Downloading app packages could get into an endless loop if managed identity was incorrectly configured.
 - Deleting a task could sometimes cause a race condition where the task state would be lost.
 - Ubuntu 18.04 has been deprecated per OS being EOL.
@@ -239,9 +280,9 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 ### 1.8.4
 #### Released: 2020-08-04
 - Fix bug where uploading output files could fail due to intermittent DNS failures.
-- Fix bug in node preparation where some classifications of timeout errors were no longer being retried.  
+- Fix bug in node preparation where some classifications of timeout errors were no longer being retried.
 - Fix bug where spawning the process for a task could fail in rare cases.
-- Nodes will now detect when the OS disk is approaching being full and 
+- Nodes will now detect when the OS disk is approaching being full and
   will be marked as `Unusable` with a corresponding `NodeError`.
   Running tasks will be requeued for execution elsewhere.
 
@@ -271,7 +312,7 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 #### Released: 2020-03-07
 - Append a `\n` to empty certificate password files in Linux.
   OpenSSL expects a newline if the file is otherwise empty.
-- Add a new environment variable for Batch Node Agent reserved 
+- Add a new environment variable for Batch Node Agent reserved
   disk space: `AZ_BATCH_RESERVED_DISK_SPACE_BYTES`.
 - Add a new environment variable for the Start Task working directory:
   `AZ_BATCH_NODE_STARTUP_WORKING_DIR`.
@@ -281,13 +322,13 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 ### 1.7.10
 #### Released: 2020-02-14
 - Fix bug where certificates installed to the "CurrentUser" store
-  on Windows could have inaccessible private keys for short periods of time 
-  when the pool had `MaxTasksPerNode` greater than 1 and tasks were run 
+  on Windows could have inaccessible private keys for short periods of time
+  when the pool had `MaxTasksPerNode` greater than 1 and tasks were run
   with `UserScope` `Pool`.
-    - This was caused by tasks reinstalling the certificate into the certificate 
+    - This was caused by tasks reinstalling the certificate into the certificate
       store each time they launched.
-- Fix bug where the `FailureInfo` property of the `StartTask` could persist 
-  through retries, causing a successful `StartTask` to look like it had 
+- Fix bug where the `FailureInfo` property of the `StartTask` could persist
+  through retries, causing a successful `StartTask` to look like it had
   failed.
 
 ### 1.7.9
@@ -302,83 +343,83 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ### 1.7.7
 #### Released: 2020-01-17
-- Add Debian 9/10 support for blobfuse mounts (specified in 
+- Add Debian 9/10 support for blobfuse mounts (specified in
   `MountConfiguration` on the `Pool`). Note that Debian 10 support is not yet
   available in Batch but is coming soon.
-- Add CentOS 8 support for NFS/CIFS/Azure Files (specified in 
+- Add CentOS 8 support for NFS/CIFS/Azure Files (specified in
   `MountConfiguration` on the `Pool`). Note that CentOS 8 support is not yet
   available in Batch but is coming soon.
-- Fix bug which could cause nodes to block Pool resize and be unable 
+- Fix bug which could cause nodes to block Pool resize and be unable
   to reboot when they ran out of disk space.
 - Improve error message if PATH not set in Windows.
 
 ### 1.7.6
 #### Released: 2020-01-07
 - Fix bug which could cause terminate job to get stuck in some cases.
-- Fix bug where Job Preparation tasks would not retry more than 3 times 
+- Fix bug where Job Preparation tasks would not retry more than 3 times
   even if they had been configured to do so.
-- Fix bug where after a node ran out of disk space it would have one or 
+- Fix bug where after a node ran out of disk space it would have one or
   more tasks stuck in `Running` state and not respond to reboot requests.
-- Fix bug which could cause tasks with dependencies configured to fail on 
+- Fix bug which could cause tasks with dependencies configured to fail on
   some non-English locales.
 - Fix bug where a `ResourceFile` with an Azure Storage container URL specified
-  would not correctly download files from a container with public access 
+  would not correctly download files from a container with public access
   configured.
-- Fix bug which in rare cases could cause deletion of multi-instance subtasks 
+- Fix bug which in rare cases could cause deletion of multi-instance subtasks
   to get stuck.
-- Improve error handling for disk full in Linux where the file system has 
+- Improve error handling for disk full in Linux where the file system has
   run out of free inodes.
-- Improve error message reported when a task has run out of wall clock time 
+- Improve error message reported when a task has run out of wall clock time
   and is terminated.
 
 ### 1.7.5
 #### Released: 2019-12-06
-- Fix bug where the node did not correctly block new tasks from being 
+- Fix bug where the node did not correctly block new tasks from being
   scheduled when it detected the disk was full.
-- Fix bug which in rare cases could cause tasks run on nodes with 
+- Fix bug which in rare cases could cause tasks run on nodes with
   `MaxTasksPerNode` > 1 to intermittently fail.
 - Fix bug which could cause a task to fail when it referenced a specific
-  `ApplicationPackage` version if the `Application` had a different 
+  `ApplicationPackage` version if the `Application` had a different
   default version which was not referenced.
 - Fixed bug which could cause Linux nodes to be `Unusable` due to issues
   with the SSH service.
 
 ### 1.7.4
 #### Released: 2019-10-23
-- Fix rare bug where Linux nodes (usually CentOS) would immediately go into 
+- Fix rare bug where Linux nodes (usually CentOS) would immediately go into
   `Unusable` state after starting due to incorrectly detecting
   the machine drive layout.
 - Fix bug which could cause tasks with `ContainerSettings` which had
   a long `ContainerRunOptions` to fail to properly launch,
-  resulting in the task becoming stuck in `Running` state on the node. 
+  resulting in the task becoming stuck in `Running` state on the node.
 
 ### 1.7.2
 #### Released: 2019-10-21
 - Add support for SR-IOV IB/RDMA devices with Docker containers.
 - Improve SSH daemon configuration on first boot for Linux VMs.
-- Slightly increase priority of node agent and controller processes 
-  on Linux to decrease probability of CPU starvation in situations 
-  of CPU over subscription which can help prevent unnecessary 
+- Slightly increase priority of node agent and controller processes
+  on Linux to decrease probability of CPU starvation in situations
+  of CPU over subscription which can help prevent unnecessary
   node recoveries.
 - Fix bug where some requests to Azure Storage were improperly retried.
 
 ### 1.7.1
 #### Released: 2019-10-09
-- Fix bug which caused the agent to deadlock when infinitely recursive 
+- Fix bug which caused the agent to deadlock when infinitely recursive
   environment variables were defined on a task.
 - Fix a number of rare bugs which could cause internal metadata corruption
   and prevent tasks from being run.
 - Fix bug which caused the default-version application package environment
-  variable (e.g. `AZ_BATCH_APP_PACKAGE_Foo` for an application named `Foo`) 
-  to be unset when a pool level application was already installed 
+  variable (e.g. `AZ_BATCH_APP_PACKAGE_Foo` for an application named `Foo`)
+  to be unset when a pool level application was already installed
   and then a more recent task level package was installed.
-- Fix bug where DNS errors during `ResourceFile` download were incorrectly 
+- Fix bug where DNS errors during `ResourceFile` download were incorrectly
   categorized as `BlobNotFound`.
 - Fix bug which prevented `NFSMountConfiguration` from functioning in cases
   where the `nfs-common` package was not pre-installed on the operating system.
 - Fix bug where a task interrupted due to an unexpected reboot would appear in
   the compute node's `RecentTasks` and also left task-related data on disk.
-- Fix bug where a job preparation task which had surpassed its data retention 
+- Fix bug where a job preparation task which had surpassed its data retention
   time would block that job from being deleted forever.
 - Fix bug where an internal error or pool shrink with `Requeue` option could
   cause an interrupted `JobManager` task to incorrectly terminate the job
@@ -386,7 +427,7 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ### 1.6.6
 #### Released: 2019-08-26
-- Nodes will now detect when the ephemeral disk is approaching full and 
+- Nodes will now detect when the ephemeral disk is approaching full and
   will be marked as `Unusable` with a corresponding `NodeError`.
   Running tasks will be requeued for execution elsewhere.
 - Allow delete, terminate, and disable job while the node is in `Unusable`
@@ -395,58 +436,58 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 - Support for Ubuntu 14.04 dropped.
 - Reduced load on the scheduler by filtering what information is returned
   during compute node initialization.
-- Fix bug where job release tasks would not run properly if the 
-  job preparation task was deleted due to retention time. When a job release 
-  task is run and the job preparation task has been cleaned up due to 
-  retention time the `AZ_BATCH_JOB_PREP_DIR` environment variable 
-  points to where the directory _was_ (it was deleted due to data 
+- Fix bug where job release tasks would not run properly if the
+  job preparation task was deleted due to retention time. When a job release
+  task is run and the job preparation task has been cleaned up due to
+  retention time the `AZ_BATCH_JOB_PREP_DIR` environment variable
+  points to where the directory _was_ (it was deleted due to data
   retention time)
-- Fix bug where non-standard tasks such as the start task or 
-  job preparation task were being reported in task history 
+- Fix bug where non-standard tasks such as the start task or
+  job preparation task were being reported in task history
   (`RecentTasks` on the node) unintentionally.
 - Fix bug where parallel ongoing operations could corrupt state and cause
   the node to be unable to perform new work.
-- Fix bug where during list file operations when an error occurred an 
+- Fix bug where during list file operations when an error occurred an
   incomplete file list with no continuation token would be returned rather
   than an error.
 - Fix bug where `AZ_BATCH_POOL_ID` was not correctly preserving case.
 
 ### 1.6.3
 #### Released: 2019-07-22
-- Add ability to mount remote file systems. Supported file system types are 
-  Blobfuse, CIFS/SMB, Azure Files, and NFS. Support for specifying remote 
+- Add ability to mount remote file systems. Supported file system types are
+  Blobfuse, CIFS/SMB, Azure Files, and NFS. Support for specifying remote
   file systems on a Pool will be in an upcoming Batch API version.
-- Improve error handling and reporting for nodes in `Unusable` state. 
+- Improve error handling and reporting for nodes in `Unusable` state.
   Additional details about why the node is `Unusable` will now consistently
-  be available in the `errors` property on the 
+  be available in the `errors` property on the
   [ComputeNode](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenode).
-- Allow custom ephemeral disk mount points and support additional 
+- Allow custom ephemeral disk mount points and support additional
   common file system types for the ephemeral disk in Linux.
 - Support `OpenLogic CentOS-HPC 7.6`.
 - Fix bug where container image tags with uppercase characters were not
   downloaded correctly.
-- Fix bug where tasks running as non-elevated users in Linux incorrectly 
+- Fix bug where tasks running as non-elevated users in Linux incorrectly
   had all of their groups cleared.
 
 ### 1.5.11
 #### Released: 2019-06-05
-- Fix regression introduced in 1.5.10 where reboots or reimages could be 
+- Fix regression introduced in 1.5.10 where reboots or reimages could be
   delayed up to 15 minutes.
 
 ### 1.5.10
 #### Released: 2019-05-31
-- Fix bug where files with unicode characters in names were not properly 
+- Fix bug where files with unicode characters in names were not properly
   uploaded during Output File upload.
-- Fix bug where RHEL and Oracle Linux compute nodes were provisioned 
+- Fix bug where RHEL and Oracle Linux compute nodes were provisioned
   as `unusable`.
-- Fix bug where compute node recovery attempts via reboot were sometimes 
+- Fix bug where compute node recovery attempts via reboot were sometimes
   not honored.
 - Continued improvements in retry logic for container login and pull failures.
 
 ### 1.5.9
 #### Released: 2019-05-16
 - Fix bug where task metrics could be dropped due to integer overflow.
-- Fix extremely rare bug causing tasks to be stuck in `running` state even 
+- Fix extremely rare bug causing tasks to be stuck in `running` state even
   when the associated processes had exited on Windows.
 - Improve error handling when terminating a process fails due to
   an operating system error.
@@ -454,13 +495,13 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 ### 1.5.8
 #### Released: 2019-05-02
 - Fix bug which caused the node to become `unusable` when the ephemeral
-  drive was lost but the operating system drive was retained due to 
+  drive was lost but the operating system drive was retained due to
   incorrectly attempting to create already existing pool scope user accounts.
 
 ### 1.5.7
 #### Released: 2019-04-26
 - Improve retries on DNS resolution failures.
-- Retry up to a maximum of 3 times for a retryable task which fails in 
+- Retry up to a maximum of 3 times for a retryable task which fails in
   succession on a compute node before attempting to reschedule on another node
   if possible.
 - Fix bug which could cause statistics collection to be delayed.
@@ -468,14 +509,14 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 ### 1.5.6
 #### Released: 2019-04-19
 - Add preliminary support for per-job VNET injection.
-- Fix bug where a task unable to complete on the compute node was 
+- Fix bug where a task unable to complete on the compute node was
   incorrectly reported as completed.
-- Fix bug where a task encountering a bad image format exception was 
+- Fix bug where a task encountering a bad image format exception was
   treated as an internal error and retried forever.
 - Pool scope users are no longer deleted and recreated on node boot.
-  This attempts to reduce a number of internal errors encountered either 
-  because the Windows user profile service has an issue, or the customer has 
-  done something to lock the user profile directory. Pool scope users and 
+  This attempts to reduce a number of internal errors encountered either
+  because the Windows user profile service has an issue, or the customer has
+  done something to lock the user profile directory. Pool scope users and
   their associated data now persist for the lifetime of the node,
   including through reboots.
 - Improve error handling for Docker login and pull actions.
@@ -483,7 +524,7 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 ### 1.5.5
 #### Released: 2019-04-03
 - Fix bug where application package environment variables were sometimes
-  not correctly updated when the default version of the application was 
+  not correctly updated when the default version of the application was
   changed and the node was rebooted.
 - Fix bug where after a node reboot in Linux, sometimes the `List Task Files`
   or `Get Task File` APIs would fail to find a file that was actually on disk.
@@ -491,31 +532,31 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ### 1.5.4
 #### Released: 2019-03-25
-- Internal telemetry improvements to help the product team better diagnose 
+- Internal telemetry improvements to help the product team better diagnose
   issues after VMs have been removed from a pool.
-- Fix issue where a concurrent termination or deletion operation in 
-  conjunction with command process exit would prevent new tasks from 
+- Fix issue where a concurrent termination or deletion operation in
+  conjunction with command process exit would prevent new tasks from
   being run.
 
 ### 1.5.3
 #### Released: 2019-03-12
 - Add support for `--mount` option on container tasks.
 - Add support for an upcoming Batch Service feature allowing container
-  tasks to use the working directory of the container rather than 
+  tasks to use the working directory of the container rather than
   the default Batch working directory for the task.
   - This feature will be enabled in a future Batch REST API version.
 - Fix bug which could cause a task to get stuck if deleted immediately
   after it started running.
-- Fix bug where the multi-instance master subtask could 
-  mistakenly overwrite details about the execution of the other subtasks. This 
-  caused the subtasks to not show up in the API until they reached 
+- Fix bug where the multi-instance master subtask could
+  mistakenly overwrite details about the execution of the other subtasks. This
+  caused the subtasks to not show up in the API until they reached
   `completed` state.
 - Fix bug where `docker login` was not retried when throttled.
 - Improve handling of Windows user profile creation getting stuck.
 
 ### 1.4.12
 #### Released: 2019-02-15
-- Fix bug which could corrupt the download of the final portion of a 
+- Fix bug which could corrupt the download of the final portion of a
   `ResourceFile` in rare cases.
 
 ### 1.4.11
@@ -525,11 +566,11 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ### 1.4.10
 #### Released: 2019-02-03
-- Fix bug that caused the node to get stuck in `Unusable` 
+- Fix bug that caused the node to get stuck in `Unusable`
   due to rare cases of unavailable networking at the time of agent boot.
 - Fix bug where frequent reboots could cause the agent to be unable
   to join a pool, even if the reboots stopped happening.
-- Fix bug where job preparation tasks could get stuck on VMs with 
+- Fix bug where job preparation tasks could get stuck on VMs with
   `MaxTaskPerVMs` greater than 1 if multiple tasks were scheduled to
   the node at the same time.
 - Fix bug where files downloaded by the node could get corrupted.
@@ -540,37 +581,37 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 
 ### 1.4.9
 #### Released: 2019-01-14
-- Fix bug where connection/HTTP failures happening persistently for a long 
+- Fix bug where connection/HTTP failures happening persistently for a long
   period of time could cause the agent to enter an unrecoverable state.
 - Retry longer on connection errors.
 - Retry on intermittent DNS failures.
-- Move Windows user profiles to the ephemeral drive for 
+- Move Windows user profiles to the ephemeral drive for
   `CloudServiceConfiguration` based pools.
 
 ### 1.4.7
 #### Released: 2018-11-29
 - Implement a timeout on Windows user profile creation. If the user profile
-  creation takes too long, the task is retried (possibly on another 
+  creation takes too long, the task is retried (possibly on another
   compute node).
-- Fix bug on Windows where some tasks which create child processes could 
-  prevent task termination even if the parent process exited, causing 
+- Fix bug on Windows where some tasks which create child processes could
+  prevent task termination even if the parent process exited, causing
   the task to get stuck.
 - Fix application package root directory to be `applications`
   and not `apppackages`.
-- Fix bug where tasks which were retried on the node did 
+- Fix bug where tasks which were retried on the node did
   not properly clean up their working directory prior to retry.
 - Add support for specifying Windows user login mode (`batch` or `interactive`).
 - Add support for Windows Server 2019 in `VirtualMachineConfiguration` pools.
 
 ### 1.4.5
 #### Released: 2018-11-13
-- Fix bug where certain connection errors were not properly 
+- Fix bug where certain connection errors were not properly
   retried when performing resource file downloads on Windows.
 
 ### 1.4.4
 #### Released: 2018-11-06
-- Fix bug where multi-instance tasks with common resource files and normal 
-  resource files would fail to download the common resource files in 
+- Fix bug where multi-instance tasks with common resource files and normal
+  resource files would fail to download the common resource files in
   some cases.
 - Fix bug where the agent could leak memory when preparing the task
   command line for execution in Windows.
@@ -584,13 +625,13 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
   be deleted in some cases.
 - Fix bug where file deletion failures during node boot could delay
   initialization for a long time, causing the node get marked `Unusable`.
-- Fix bug where the tasks spawned by the NodeAgent on Windows would incorrectly 
-  have the win32 `DllDirectory` path set. This allows native applications 
+- Fix bug where the tasks spawned by the NodeAgent on Windows would incorrectly
+  have the win32 `DllDirectory` path set. This allows native applications
   using the `SetDllDirectory` API to behave as intended.
 - Use a more generous connection/transmission timeout when uploading files via
   `OutputFiles`.
-- Fix bug where unversioned environment variables for applications 
-  (e.g. `AZ_BATCH_APP_PACKAGE_AppName`) could incorrectly point at older 
+- Fix bug where unversioned environment variables for applications
+  (e.g. `AZ_BATCH_APP_PACKAGE_AppName`) could incorrectly point at older
   package versions in some cases if both old and new packages were
   installed onto the same node.
 - Reduce log file disk usage for VMs with limited ephemeral disk space.
@@ -599,18 +640,18 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 #### Released: 2018-10-16
 - Fix bug introduced in `1.3.0.12` where nodes with application packages
   could go to `Unusable` after being rebooted.
-- Improve the logs generated when uploading `OutputFiles` in 
+- Improve the logs generated when uploading `OutputFiles` in
   `fileuploadout.txt`.
 
 ### 1.3.0.12
 #### Released: 2018-09-28
 - Fix bug where once a node had installed a task level application package
-  it would include that application package environment variable on other 
+  it would include that application package environment variable on other
   tasks even if they didn't specify a dependency on that application package.
-- Fix bug where job preparation tasks which failed due to a certificate 
+- Fix bug where job preparation tasks which failed due to a certificate
   installation error could never be re-run, which blocked the job on that node
   forever.
-- Reduce the time to install and prepare the Batch components on Windows 
+- Reduce the time to install and prepare the Batch components on Windows
   compute nodes. In ideal cases this reduces the time taken for a node to
   reach `idle` state when initially joining a pool.
 
@@ -620,15 +661,15 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 - Fix bug where some Node Agent files had a corrupt digital signature.
 - Reduce how aggressively the Node Agent retries on directory delete failures.
 - Fix bug where sometimes autoscale metrics could be invalid.
-- Fix bug where Windows tasks running in parallel (on pools with 
+- Fix bug where Windows tasks running in parallel (on pools with
   `MaxTasksPerNode` > 1) could inherit each others stdout/stderr handles.
   This could cause failures when trying to delete the task's files because
-  running processes would still have locks on stdout/stderr or lead 
+  running processes would still have locks on stdout/stderr or lead
   to restarts.
 
 ### 1.3.0.10
 #### Released: 2018-08-31
-- Fix regression where rebooting a node with certificates could cause it to 
+- Fix regression where rebooting a node with certificates could cause it to
   become unresponsive.
 
 ### 1.3.0.9
@@ -643,7 +684,7 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 ### 1.3.0.8
 #### Released: 2018-08-13
 - Add support required for task `result` OData filter for all task types.
-- Improve detection of Blob Not Found errors when downloading 
+- Improve detection of Blob Not Found errors when downloading
   resource files or application packages.
 - Improve directory deletion logic:
   - Files or directories locked by running processes.
@@ -651,7 +692,7 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
 - Added support for the following new images:
   - `Canonical:UbuntuServer:18.04-LTS`
   - `microsoft-azure-batch:centos-container:7-5`
-- Fix bug and added retries where where docker login could fail due to 
+- Fix bug and added retries where where docker login could fail due to
   a timeout error.
 - Fix bug where node couldn't run any tasks after a reboot, due to getting
   stuck trying to garbage collect task files.
@@ -665,7 +706,7 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/list#nodeagentinfor
   - This will be utilized in an upcoming REST API release.
 - Improve telemetry emitted by the Node Agent if it fails to properly
   bootstrap.
-- Fix bug where using 
+- Fix bug where using
   `microsoft-azure-batch:ubuntu-server-container:16-04-lts` or
   `microsoft-azure-batch:ubuntu-server-container-rdma:16-04-lts` marketplace
   images on a GPU SKU would cause kernel updates to be perpetually held.
